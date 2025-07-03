@@ -11,6 +11,7 @@
             --dark-bg: #0a0a1a;
             --card-bg: #12122a;
             --text-color: #f0f0f0;
+            --whatsapp-green: #25D366;
         }
         
         * {
@@ -72,43 +73,28 @@
             color: var(--neon-blue);
         }
         
-        .services-header {
-            text-align: center;
-            margin: 40px 0 20px;
-            font-size: 2rem;
-            color: var(--neon-blue);
-        }
-        
-        .services-container {
+        .services-section {
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
+            margin: 50px 0;
             flex-wrap: wrap;
-            margin: 20px 0;
-            gap: 20px;
         }
         
-        .service-card {
-            width: 150px;
-            height: 150px;
-            background: var(--card-bg);
-            border: 1px solid var(--neon-blue);
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 15px 0;
-            box-shadow: 0 0 20px rgba(0, 255, 252, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 30px rgba(0, 255, 252, 0.5);
+        .service-item {
+            text-align: center;
+            margin: 20px;
+            width: 200px;
         }
         
         .service-icon {
             font-size: 3rem;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
             color: var(--neon-blue);
         }
         
@@ -280,33 +266,13 @@
             box-shadow: 0 0 15px var(--neon-blue);
         }
         
-        /* گفتینو چت */
-        .chatino-container {
+        /* دکمه واتساپ */
+        .whatsapp-chat-button {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            width: 350px;
-            height: 500px;
-            z-index: 1000;
-            border: 1px solid var(--neon-blue);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
-            display: none;
-        }
-        
-        .chatino-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .chat-toggle {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: var(--neon-blue);
-            color: var(--dark-bg);
+            background: var(--whatsapp-green);
+            color: white;
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -314,12 +280,13 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 255, 252, 0.7);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.7);
             z-index: 999;
+            text-decoration: none;
         }
         
-        .chat-toggle i {
-            font-size: 1.5rem;
+        .whatsapp-chat-button i {
+            font-size: 1.8rem;
         }
         
         @keyframes glow {
@@ -352,12 +319,7 @@
             margin-right: 10px;
         }
         
-        body.english .chatino-container {
-            left: auto;
-            right: 20px;
-        }
-        
-        body.english .chat-toggle {
+        body.english .whatsapp-chat-button {
             left: auto;
             right: 20px;
         }
@@ -409,14 +371,6 @@
             margin-top: 20px;
             animation: glow 1.5s infinite alternate;
         }
-        
-        /* About and Services sections */
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin: 30px 0;
-            color: var(--neon-blue);
-        }
     </style>
 </head>
 <body>
@@ -433,14 +387,30 @@
         </header>
         
         <div class="logo-container">
-            <img src="51D8C18B-603C-4B80-92F5-609229941BF4.png" alt="MWT Logo" class="logo">
+            <img src="https://i.ibb.co/VYvLqQk/mwt-logo.png" alt="MWT Logo" class="logo">
             <h1 class="title">توانمندسازی سفر معاملاتی شما</h1>
             <p class="subtitle">Empowering your trade journey</p>
             <h2 class="founder">بنیانگذار مفهوم MWT</h2>
             <p class="subtitle">founder of MWT concept</p>
         </div>
         
-        <h2 class="section-title">درباره ما</h2>
+        <div class="services-section">
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fas fa-user-tie"></i>
+                    <i class="fas fa-user"></i>
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+                <h3 class="service-title">درباره ما</h3>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="service-title">خدمات </h3>
+            </div>
+        </div>
         
         <div class="content-section">
             <p id="motivational-text-1">
@@ -453,34 +423,6 @@
                 امروز زمان آن است که ترس‌ها را کنار بگذارید و به سمت آینده‌ای روشن‌تر حرکت کنید.
                 با ما، آموزش ترید اسکلپی و روندی را به‌همراه نگاهی متفاوت از جنس کیهان تجربه می‌کنید.
             </p>
-        </div>
-        
-        <h2 class="section-title">خدمات </h2>
-        
-        <div class="services-container">
-            <div class="service-card" id="service-1">
-                <div class="service-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-            </div>
-            
-            <div class="service-card" id="service-2">
-                <div class="service-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-            
-            <div class="service-card" id="service-3">
-                <div class="service-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-            </div>
-            
-            <div class="service-card" id="service-4">
-                <div class="service-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-            </div>
         </div>
         
         <div class="accordion">
@@ -502,7 +444,7 @@
         
         <div class="accordion">
             <div class="accordion-header">
-                <span> مسیر ارتباطی </span>
+                <span>مسیر های ارتباطی </span>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="accordion-content">
@@ -521,14 +463,12 @@
             </div>
         </div>
         
-        <!-- گفتینو چت -->
-        <div class="chatino-container" id="chatino-widget">
-            <iframe src="https://chatino.com/widget/your-widget-id" class="chatino-iframe" allow="microphone"></iframe>
-        </div>
-        
-        <div class="chat-toggle">
-            <i class="fas fa-comment-dots"></i>
-        </div>
+        <!-- دکمه واتساپ -->
+        <a href="https://wa.me/989393807645?text=سلام،%20از%20سایت%20شما%20دیدن%20کردم.%20لطفاً%20راهنمایی%20کنید." 
+           class="whatsapp-chat-button" 
+           target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
     </div>
     
     <!-- Login Modal -->
@@ -584,13 +524,8 @@
     </div>
     
     <script>
-        // Telegram Bot Token - جایگزینی با توکن ربات خودتان
-        const TELEGRAM_BOT_TOKEN = '7021856190:AAHeMgIGmTzBi0VsVKTMjvvcU9o3yKJlwEw';
-        // جایگزینی با Chat ID واقعی شما (عددی مثل 123456789)
-        const TELEGRAM_CHAT_ID = 'YOUR_ACTUAL_CHAT_ID';
-        
-        // شماره شما برای ارسال SMS
-        const ADMIN_PHONE = '09393807645';
+        // شماره واتساپ شما
+        const WHATSAPP_NUMBER = '989393807645'; // بدون + یا 00
         
         // Accordion functionality
         const accordions = document.querySelectorAll('.accordion');
@@ -640,46 +575,11 @@
             }
         });
         
-        // تابع ارسال پیام به تلگرام با استفاده از CORS Anywhere
-        async function sendToTelegram(message) {
-            const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-            const apiUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-            
-            try {
-                const response = await fetch(proxyUrl + apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        chat_id: TELEGRAM_CHAT_ID,
-                        text: message,
-                        parse_mode: 'HTML'
-                    })
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Failed to send message to Telegram');
-                }
-                
-                return await response.json();
-            } catch (error) {
-                console.error('Error sending to Telegram:', error);
-                throw error;
-            }
-        }
-        
-        // تابع ارسال SMS (شبیه‌سازی)
-        function sendSMS(phone, message) {
-            // در واقعیت اینجا باید از یک سرویس SMS استفاده کنید
-            console.log(`SMS to ${phone}: ${message}`);
-            
-            // این فقط برای نمایش است - در عمل باید از API سرویس SMS استفاده کنید
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    resolve({ success: true });
-                }, 1000);
-            });
+        // تابع ارسال پیام به واتساپ
+        function sendWhatsAppMessage(phone, message) {
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
+            return true; // همیشه موفق فرض می‌شود
         }
         
         // Registration form
@@ -704,38 +604,28 @@
             submitBtn.classList.add('loading');
             
             try {
-                // Prepare Telegram message
-                const telegramMessage = `
-                    <b>ثبت نام جدید در MWT Concept</b>\n
-                    <b>نام:</b> ${name}\n
-                    <b>ایمیل:</b> ${email}\n
-                    <b>تلفن:</b> ${phone}\n
-                    <b>زمان:</b> ${new Date().toLocaleString('fa-IR')}
-                `;
+                // ارسال پیام به واتساپ
+                const whatsappMessage = `ثبت نام جدید در MWT Concept\n\nنام: ${name}\nایمیل: ${email}\nتلفن: ${phone}\nزمان: ${new Date().toLocaleString('fa-IR')}`;
+                const sent = sendWhatsAppMessage(WHATSAPP_NUMBER, whatsappMessage);
                 
-                // Send to Telegram
-                await sendToTelegram(telegramMessage);
-                
-                // ارسال SMS به شماره شما
-                const smsMessage = `ثبت نام جدید: ${name} - ${phone}`;
-                await sendSMS(ADMIN_PHONE, smsMessage);
-                
-                // Show success message
-                registerSuccess.textContent = 'ثبت نام شما با موفقیت انجام شد! اطلاعات به مدیر ارسال شد.';
-                registerSuccess.style.display = 'block';
-                
-                // Reset form
-                registerForm.reset();
-                
-                // Hide modal after 3 seconds
-                setTimeout(() => {
-                    registerModal.style.display = 'none';
-                    registerSuccess.style.display = 'none';
-                }, 3000);
+                if (sent) {
+                    registerSuccess.textContent = 'ثبت نام شما با موفقیت انجام شد! پنجره واتساپ باز شد.';
+                    registerSuccess.style.display = 'block';
+                    
+                    // Reset form
+                    registerForm.reset();
+                    
+                    // Hide modal after 3 seconds
+                    setTimeout(() => {
+                        registerModal.style.display = 'none';
+                        registerSuccess.style.display = 'none';
+                    }, 3000);
+                }
                 
             } catch (error) {
                 console.error('Error:', error);
-                alert('ثبت نام انجام شد، اما ارسال پیام به مدیر با مشکل مواجه شد. لطفاً از طریق واتس‌اپ یا تلگرام با ما در ارتباط باشید.');
+                registerSuccess.textContent = 'ثبت نام انجام شد! لطفاً به واتساپ پیام دهید.';
+                registerSuccess.style.display = 'block';
             } finally {
                 submitBtn.classList.remove('loading');
             }
@@ -755,44 +645,32 @@
             submitBtn.classList.add('loading');
             
             try {
-                // Prepare Telegram message
-                const telegramMessage = `
-                    <b>ورود کاربر به MWT Concept</b>\n
-                    <b>ایمیل:</b> ${email}\n
-                    <b>زمان:</b> ${new Date().toLocaleString('fa-IR')}
-                `;
+                // ارسال پیام به واتساپ
+                const whatsappMessage = `ورود کاربر به MWT Concept\n\nایمیل: ${email}\nزمان: ${new Date().toLocaleString('fa-IR')}`;
+                const sent = sendWhatsAppMessage(WHATSAPP_NUMBER, whatsappMessage);
                 
-                // Send to Telegram
-                await sendToTelegram(telegramMessage);
-                
-                // Show success message
-                loginSuccess.textContent = 'ورود شما با موفقیت انجام شد!';
-                loginSuccess.style.display = 'block';
-                
-                // Reset form
-                loginForm.reset();
-                
-                // Hide modal after 3 seconds
-                setTimeout(() => {
-                    loginModal.style.display = 'none';
-                    loginSuccess.style.display = 'none';
-                    isLoggedIn = true;
-                }, 3000);
+                if (sent) {
+                    loginSuccess.textContent = 'ورود شما با موفقیت انجام شد!';
+                    loginSuccess.style.display = 'block';
+                    
+                    // Reset form
+                    loginForm.reset();
+                    
+                    // Hide modal after 3 seconds
+                    setTimeout(() => {
+                        loginModal.style.display = 'none';
+                        loginSuccess.style.display = 'none';
+                        isLoggedIn = true;
+                    }, 3000);
+                }
                 
             } catch (error) {
                 console.error('Error:', error);
-                alert('ورود انجام شد، اما ارسال پیام به مدیر با مشکل مواجه شد.');
+                loginSuccess.textContent = 'ورود انجام شد! لطفاً به واتساپ پیام دهید.';
+                loginSuccess.style.display = 'block';
             } finally {
                 submitBtn.classList.remove('loading');
             }
-        });
-        
-        // گفتینو چت
-        const chatToggle = document.querySelector('.chat-toggle');
-        const chatinoWidget = document.getElementById('chatino-widget');
-        
-        chatToggle.addEventListener('click', () => {
-            chatinoWidget.style.display = chatinoWidget.style.display === 'block' ? 'none' : 'block';
         });
         
         // Language switcher
@@ -857,8 +735,8 @@
             document.querySelector('.subtitle').textContent = persianTexts.subtitle;
             document.querySelector('.founder').textContent = persianTexts.founder;
             document.querySelectorAll('.subtitle')[1].textContent = persianTexts.founderSubtitle;
-            document.querySelectorAll('.section-title')[0].textContent = persianTexts.aboutUsTitle;
-            document.querySelectorAll('.section-title')[1].textContent = persianTexts.servicesTitle;
+            document.querySelectorAll('.service-title')[0].textContent = persianTexts.aboutUsTitle;
+            document.querySelectorAll('.service-title')[1].textContent = persianTexts.servicesTitle;
             document.querySelector('.login-btn').textContent = persianTexts.login;
             document.querySelector('.register-btn').textContent = persianTexts.register;
             document.querySelectorAll('.accordion-header span')[0].textContent = persianTexts.support;
@@ -887,8 +765,8 @@
             document.querySelector('.subtitle').textContent = englishTexts.subtitle;
             document.querySelector('.founder').textContent = englishTexts.founder;
             document.querySelectorAll('.subtitle')[1].textContent = englishTexts.founderSubtitle;
-            document.querySelectorAll('.section-title')[0].textContent = englishTexts.aboutUsTitle;
-            document.querySelectorAll('.section-title')[1].textContent = englishTexts.servicesTitle;
+            document.querySelectorAll('.service-title')[0].textContent = englishTexts.aboutUsTitle;
+            document.querySelectorAll('.service-title')[1].textContent = englishTexts.servicesTitle;
             document.querySelector('.login-btn').textContent = englishTexts.login;
             document.querySelector('.register-btn').textContent = englishTexts.register;
             document.querySelectorAll('.accordion-header span')[0].textContent = englishTexts.support;
