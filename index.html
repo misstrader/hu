@@ -25,12 +25,16 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            flex: 1;
         }
         
         header {
@@ -110,6 +114,7 @@
             margin: 40px 0;
             box-shadow: 0 0 20px rgba(0, 255, 252, 0.3);
             line-height: 1.8;
+            position: relative;
         }
         
         .motivational-box p {
@@ -509,14 +514,48 @@
             right: 10px;
         }
         
-        .protected-message {
+        .access-message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff5555;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(255, 85, 85, 0.3);
+            display: none;
+            z-index: 999;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        footer {
             background: var(--card-bg);
-            border: 1px solid var(--neon-blue);
-            border-radius: 10px;
-            padding: 30px;
-            margin: 40px 0;
+            color: var(--text-color);
             text-align: center;
-            box-shadow: 0 0 20px rgba(0, 255, 252, 0.3);
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--neon-blue);
+        }
+        
+        .protected-content {
+            display: none;
+            background: rgba(255, 85, 85, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            border: 1px solid #ff5555;
         }
     </style>
 </head>
@@ -529,13 +568,13 @@
                 <button class="language-btn" id="lang-en">English</button>
             </div>
             <div class="auth-buttons">
-                <button class="auth-btn register register-btn">ورود</button>
+                <button class="auth-btn login-btn">ورود</button>
                 <button class="auth-btn register register-btn">ثبت نام</button>
             </div>
         </header>
         
         <div class="logo-container">
-            <img src=" 51D8C18B-603C-4B80-92F5-609229941BF4.png" alt="MWT Logo" class="logo">
+            <img src="https://i.ibb.co/VYvLqQk/mwt-logo.png" alt="MWT Logo" class="logo">
             <h1 class="title">توانمندسازی سفر معاملاتی شما</h1>
             <p class="subtitle">Empowering your trade journey</p>
             <h2 class="founder">بنیانگذار مفهوم MWT</h2>
@@ -556,6 +595,12 @@
             <div class="section-icon">
                 <i class="fas fa-graduation-cap"></i>
             </div>
+        </div>
+        
+        <!-- محتوای محافظت شده -->
+        <div class="protected-content" id="protected-content">
+            <p>برای دسترسی به خدمات باید ثبت نام کنید</p>
+            <button class="auth-btn register" style="margin-top: 10px;">ثبت نام</button>
         </div>
         
         <!-- متن انگیزشی -->
@@ -634,13 +679,16 @@
         </div>
     </div>
     
-    <!-- صفحه خدمات محافظت شده -->
-    <div class="container page" id="protected-services-page">
-        <div class="protected-message">
-            <h2>برای دسترسی به این بخش باید ثبت نام کنید</h2>
-            <button class="auth-btn register" style="margin-top: 20px; padding: 10px 20px;">ثبت نام</button>
-        </div>
+    <!-- پیام دسترسی -->
+    <div class="access-message" id="access-message">
+        برای دسترسی به خدمات باید ثبت نام کنید
+        <button class="auth-btn register" style="margin-right: 10px; padding: 5px 10px;">ثبت نام</button>
     </div>
+    
+    <!-- فوتر -->
+    <footer>
+        تمامی حقوق این سایت متعلق به MWT Concept می‌باشد &copy; 2023
+    </footer>
     
     <!-- مودال ورود -->
     <div class="modal" id="login-modal">
@@ -732,15 +780,16 @@
                     ]
                 },
                 register: {
-                    success: "ثبت نام شما با موفقیت انجام شد! به صفحه خدمات منتقل شدید.",
+                    success: "ثبت نام شما با موفقیت انجام شد!",
                     error: "خطا در ثبت نام. لطفاً دوباره تلاش کنید.",
-                    passwordMismatch: "رمز عبور و تکرار آن مطابقت ندارند!"
+                    passwordMismatch: "رمز عبور و تکرار آن مطابقت ندارند!",
+                    accessMessage: "برای دسترسی به خدمات باید ثبت نام کنید"
                 },
                 login: {
                     success: "ورود با موفقیت انجام شد!",
                     error: "ایمیل یا رمز عبور اشتباه است."
                 },
-                protectedContent: "برای دسترسی به این بخش باید ثبت نام کنید."
+                footer: "تمامی حقوق این سایت متعلق به MWT Concept می‌باشد © 2023"
             },
             en: {
                 title: "Empowering Your Trading Journey",
@@ -771,15 +820,16 @@
                     ]
                 },
                 register: {
-                    success: "Your registration was successful! Redirected to services page.",
+                    success: "Your registration was successful!",
                     error: "Registration error. Please try again.",
-                    passwordMismatch: "Password and confirmation do not match!"
+                    passwordMismatch: "Password and confirmation do not match!",
+                    accessMessage: "You need to register to access services"
                 },
                 login: {
                     success: "Login successful!",
                     error: "Email or password is incorrect."
                 },
-                protectedContent: "You need to register to access this section."
+                footer: "All rights reserved for MWT Concept © 2023"
             }
         };
         
@@ -801,6 +851,7 @@
             document.querySelectorAll('.support-title')[1].textContent = t.contact;
             document.querySelector('.login-btn').textContent = t.login;
             document.querySelector('.register-btn').textContent = t.register;
+            document.querySelector('footer').textContent = t.footer;
             
             // به‌روزرسانی متن‌های انگیزشی
             const motivationalTexts = document.querySelectorAll('#motivational-box p');
@@ -815,12 +866,15 @@
             document.querySelector('.chat-input').placeholder = t.chat.placeholder;
             document.querySelector('#chat-messages .received p').textContent = t.chat.greeting;
             
-            // به‌روزرسانی صفحه محافظت شده
-            const protectedPage = document.getElementById('protected-services-page');
-            if (protectedPage) {
-                protectedPage.querySelector('h2').textContent = t.protectedContent;
-                protectedPage.querySelector('.auth-btn').textContent = t.register;
-            }
+            // به‌روزرسانی پیام دسترسی
+            const accessMessage = document.getElementById('access-message');
+            accessMessage.innerHTML = t.register.accessMessage + 
+                `<button class="auth-btn register" style="margin-${lang === 'fa' ? 'right' : 'left'}: 10px; padding: 5px 10px;">${t.register}</button>`;
+            
+            // به‌روزرسانی محتوای محافظت شده
+            const protectedContent = document.getElementById('protected-content');
+            protectedContent.innerHTML = `<p>${t.register.accessMessage}</p>
+                <button class="auth-btn register" style="margin-top: 10px;">${t.register}</button>`;
         }
         
         langFa.addEventListener('click', () => changeLanguage('fa'));
@@ -894,30 +948,40 @@
             }
         });
         
-        // مدیریت صفحات
-        const mainPage = document.getElementById('main-page');
-        const protectedServicesPage = document.getElementById('protected-services-page');
-        const aboutSection = document.getElementById('about-section');
+        // مدیریت خدمات و پیام دسترسی
         const servicesSection = document.getElementById('services-section');
+        const protectedContent = document.getElementById('protected-content');
+        const accessMessage = document.getElementById('access-message');
         
-        // باز کردن صفحات در تب جدید
-        aboutSection.addEventListener('click', () => {
-            window.open('about.html', '_blank');
-        });
-        
-        servicesSection.addEventListener('click', () => {
-            if (localStorage.getItem('registeredUser')) {
-                window.open('services.html', '_blank');
+        function checkRegistration() {
+            if (!localStorage.getItem('registeredUser')) {
+                protectedContent.style.display = 'block';
+                
+                // نمایش پیام دسترسی هنگام کلیک روی خدمات
+                servicesSection.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    accessMessage.style.display = 'block';
+                    
+                    // مخفی کردن پیام بعد از 5 ثانیه
+                    setTimeout(() => {
+                        accessMessage.style.display = 'none';
+                    }, 5000);
+                });
             } else {
-                mainPage.classList.remove('active');
-                protectedServicesPage.classList.add('active');
+                protectedContent.style.display = 'none';
+                
+                // اجازه دسترسی به خدمات
+                servicesSection.addEventListener('click', () => {
+                    window.open('services.html', '_blank');
+                });
             }
-        });
+        }
         
         // مدیریت مودال‌ها
         const loginBtn = document.querySelector('.login-btn');
         const registerBtn = document.querySelector('.register-btn');
-        const protectedRegisterBtn = document.querySelector('#protected-services-page .auth-btn');
+        const protectedRegisterBtn = document.querySelector('#protected-content .auth-btn');
+        const accessRegisterBtn = document.querySelector('#access-message .auth-btn');
         const loginModal = document.getElementById('login-modal');
         const registerModal = document.getElementById('register-modal');
         const closeBtns = document.querySelectorAll('.close-btn');
@@ -931,6 +995,10 @@
         });
         
         protectedRegisterBtn.addEventListener('click', () => {
+            registerModal.style.display = 'flex';
+        });
+        
+        accessRegisterBtn.addEventListener('click', () => {
             registerModal.style.display = 'flex';
         });
         
@@ -1000,8 +1068,9 @@
                 setTimeout(() => {
                     registerModal.style.display = 'none';
                     registerForm.reset();
-                    mainPage.classList.add('active');
-                    protectedServicesPage.classList.remove('active');
+                    
+                    // بروزرسانی وضعیت دسترسی
+                    checkRegistration();
                 }, 3000);
                 
                 // نمایش اطلاعات کاربر در کنسول
@@ -1053,8 +1122,9 @@
             }, 1500);
         });
         
-        // مقداردهی اولیه با زبان فارسی
+        // مقداردهی اولیه
         changeLanguage('fa');
+        checkRegistration();
     </script>
 </body>
 </html>
