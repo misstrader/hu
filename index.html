@@ -11,7 +11,6 @@
             --dark-bg: #0a0a1a;
             --card-bg: #12122a;
             --text-color: #f0f0f0;
-            --whatsapp-green: #25D366;
         }
         
         * {
@@ -73,14 +72,19 @@
             color: var(--neon-blue);
         }
         
-        .section-container {
-            margin: 50px 0;
+        .section-box {
+            background: var(--card-bg);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
             text-align: center;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.3);
         }
         
         .section-title {
             font-size: 2rem;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             color: var(--neon-blue);
         }
         
@@ -88,18 +92,6 @@
             font-size: 3rem;
             color: var(--neon-blue);
             margin: 20px 0;
-            display: block;
-        }
-        
-        .section-link {
-            color: var(--neon-blue);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-        }
-        
-        .section-link:hover {
-            text-shadow: 0 0 10px var(--neon-blue);
         }
         
         .content-section {
@@ -470,10 +462,26 @@
             margin-top: 20px;
             animation: glow 1.5s infinite alternate;
         }
+        
+        /* Admin Panel Button */
+        .admin-panel-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--neon-blue);
+            color: var(--dark-bg);
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            z-index: 1001;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- دکمه پنل ادمین (فقط برای شما قابل مشاهده است) -->
+        <a href="#admin-panel" class="admin-panel-btn" id="admin-btn">پنل مدیریت</a>
+        
         <header>
             <div class="language-switcher">
                 <button class="language-btn" id="lang-fa">فارسی</button>
@@ -494,12 +502,11 @@
         </div>
         
         <!-- بخش درباره ما -->
-        <div class="section-container">
+        <div class="section-box">
             <h2 class="section-title">درباره ی ما</h2>
-            <a href="about.html" class="section-icon">
+            <div class="section-icon">
                 <i class="fas fa-users"></i>
-            </a>
-            <a href="about.html" class="section-link">مشاهده جزئیات بیشتر</a>
+            </div>
         </div>
         
         <div class="content-section">
@@ -516,18 +523,17 @@
         </div>
         
         <!-- بخش خدمات -->
-        <div class="section-container">
+        <div class="section-box">
             <h2 class="section-title">خدمات</h2>
-            <a href="services.html" class="section-icon">
+            <div class="section-icon">
                 <i class="fas fa-graduation-cap"></i>
-            </a>
-            <a href="services.html" class="section-link">مشاهده تمام خدمات</a>
+            </div>
         </div>
         
-        <!-- مسیرهای ارتباطی -->
+        <!-- پشتیبانی -->
         <div class="accordion">
             <div class="accordion-header">
-                <span>مسیر های ارتباطی</span>
+                <span>پشتیبانی</span>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="accordion-content">
@@ -540,8 +546,8 @@
                     <span>09393807645</span>
                 </div>
                 <div class="contact-item">
-                    <i class="fab fa-instagram"></i>
-                    <span>instagram.com/MWT_Concept</span>
+                    <i class="fas fa-envelope"></i>
+                    <span>info@mwt-concept.com</span>
                 </div>
             </div>
         </div>
@@ -565,6 +571,12 @@
                 <input type="text" class="chat-input" placeholder="پیام خود را بنویسید...">
                 <button class="chat-send"><i class="fas fa-paper-plane"></i></button>
             </div>
+        </div>
+        
+        <!-- پنل ادمین (مخفی) -->
+        <div id="admin-panel" style="display: none; margin-top: 50px;">
+            <h2 style="color: var(--neon-blue); text-align: center;">پنل مدیریت کاربران</h2>
+            <div id="users-list" style="background: var(--card-bg); padding: 20px; border-radius: 10px; margin-top: 20px;"></div>
         </div>
     </div>
     
@@ -621,13 +633,22 @@
     </div>
     
     <script>
-        // مدیریت چت آنلاین
+        // مدیریت چت آنلاین با هوش مصنوعی
         const chatToggle = document.querySelector('.chat-toggle');
         const chatContainer = document.querySelector('.chat-container');
         const closeChat = document.querySelector('.close-chat');
         const chatInput = document.querySelector('.chat-input');
         const chatSend = document.querySelector('.chat-send');
         const chatMessages = document.getElementById('chat-messages');
+        
+        // پاسخ‌های هوش مصنوعی
+        const aiResponses = [
+            "برای اطلاعات بیشتر می‌تونید به بخش خدمات مراجعه کنید.",
+            "ساعت کاری ما از 9 صبح تا 5 بعدازظهر است.",
+            "برای ثبت نام می‌تونید از فرم ثبت نام در صفحه اصلی استفاده کنید.",
+            "ما از تحلیل تکنیکال و فاندامنتال در کنار استرولوژی مالی استفاده می‌کنیم.",
+            "لطفاً شماره تماس خود را بگذارید تا با شما تماس بگیریم."
+        ];
         
         chatToggle.addEventListener('click', () => {
             chatContainer.style.display = chatContainer.style.display === 'block' ? 'none' : 'block';
@@ -647,11 +668,12 @@
                 chatMessages.appendChild(messageElement);
                 chatInput.value = '';
                 
-                // پاسخ خودکار
+                // پاسخ هوش مصنوعی
                 setTimeout(() => {
+                    const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
                     const replyElement = document.createElement('div');
                     replyElement.className = 'message received';
-                    replyElement.innerHTML = '<p>پیام شما دریافت شد. همکاران ما به زودی با شما تماس خواهند گرفت.</p>';
+                    replyElement.innerHTML = `<p>${randomResponse}</p>`;
                     chatMessages.appendChild(replyElement);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }, 1000);
@@ -676,56 +698,130 @@
             const name = document.getElementById('reg-name').value;
             const email = document.getElementById('reg-email').value;
             const phone = document.getElementById('reg-phone').value;
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm').value;
             const registerSuccess = document.getElementById('register-success');
+            
+            if (password !== confirmPassword) {
+                alert('رمز عبور و تکرار آن مطابقت ندارند!');
+                return;
+            }
             
             // Show loading state
             const submitBtn = registerForm.querySelector('.form-submit');
             submitBtn.classList.add('loading');
             
-            // شبیه‌سازی ارسال داده
+            // ذخیره اطلاعات کاربر
+            const userData = {
+                name,
+                email,
+                phone,
+                date: new Date().toLocaleString('fa-IR')
+            };
+            
+            // ذخیره در localStorage
+            let users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+            users.push(userData);
+            localStorage.setItem('registeredUsers', JSON.stringify(users));
+            
+            // نمایش پیام موفقیت
+            registerSuccess.textContent = 'ثبت نام شما با موفقیت انجام شد!';
+            registerSuccess.style.display = 'block';
+            
+            // Reset form
+            registerForm.reset();
+            
+            // Hide modal after 3 seconds
             setTimeout(() => {
-                registerSuccess.textContent = 'ثبت نام شما با موفقیت انجام شد!';
-                registerSuccess.style.display = 'block';
-                
-                // ذخیره اطلاعات در localStorage
-                const userData = {
-                    name,
-                    email,
-                    phone,
-                    date: new Date().toLocaleString('fa-IR')
-                };
-                
-                let users = JSON.parse(localStorage.getItem('registeredUsers') || [];
-                users.push(userData);
-                localStorage.setItem('registeredUsers', JSON.stringify(users));
-                
-                // Reset form
-                registerForm.reset();
-                
-                // Hide modal after 3 seconds
-                setTimeout(() => {
-                    registerModal.style.display = 'none';
-                    registerSuccess.style.display = 'none';
-                }, 3000);
-                
-                submitBtn.classList.remove('loading');
-            }, 1500);
+                registerModal.style.display = 'none';
+                registerSuccess.style.display = 'none';
+            }, 3000);
+            
+            submitBtn.classList.remove('loading');
         });
+        
+        // مدیریت پنل ادمین
+        const adminBtn = document.getElementById('admin-btn');
+        const adminPanel = document.getElementById('admin-panel');
+        
+        adminBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            adminPanel.style.display = adminPanel.style.display === 'none' ? 'block' : 'none';
+            
+            if (adminPanel.style.display === 'block') {
+                loadUsersList();
+            }
+        });
+        
+        function loadUsersList() {
+            const usersList = document.getElementById('users-list');
+            const users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+            
+            if (users.length === 0) {
+                usersList.innerHTML = '<p>هیچ کاربری ثبت نام نکرده است.</p>';
+                return;
+            }
+            
+            let html = '<table style="width: 100%; border-collapse: collapse;">';
+            html += '<tr><th style="padding: 10px; border-bottom: 1px solid var(--neon-blue);">نام</th><th style="padding: 10px; border-bottom: 1px solid var(--neon-blue);">ایمیل</th><th style="padding: 10px; border-bottom: 1px solid var(--neon-blue);">تلفن</th><th style="padding: 10px; border-bottom: 1px solid var(--neon-blue);">تاریخ ثبت نام</th></tr>';
+            
+            users.forEach(user => {
+                html += `<tr>
+                    <td style="padding: 10px; border-bottom: 1px solid var(--neon-blue);">${user.name}</td>
+                    <td style="padding: 10px; border-bottom: 1px solid var(--neon-blue);">${user.email}</td>
+                    <td style="padding: 10px; border-bottom: 1px solid var(--neon-blue);">${user.phone}</td>
+                    <td style="padding: 10px; border-bottom: 1px solid var(--neon-blue);">${user.date}</td>
+                </tr>`;
+            });
+            
+            html += '</table>';
+            usersList.innerHTML = html;
+        }
         
         // مدیریت زبان
         const langFa = document.getElementById('lang-fa');
         const langEn = document.getElementById('lang-en');
         
+        // Persian translations
+        const persianTexts = {
+            title: "توانمندسازی سفر معاملاتی شما",
+            aboutUs: "درباره ی ما",
+            services: "خدمات",
+            support: "پشتیبانی",
+            registerSuccess: "ثبت نام شما با موفقیت انجام شد!"
+        };
+        
+        // English translations
+        const englishTexts = {
+            title: "Empowering Your Trading Journey",
+            aboutUs: "About Us",
+            services: "Services",
+            support: "Support",
+            registerSuccess: "Your registration was successful!"
+        };
+        
         langFa.addEventListener('click', () => {
             document.body.classList.remove('english');
             document.documentElement.lang = 'fa';
             document.documentElement.dir = 'rtl';
+            
+            // Update texts
+            document.querySelector('.title').textContent = persianTexts.title;
+            document.querySelectorAll('.section-title')[0].textContent = persianTexts.aboutUs;
+            document.querySelectorAll('.section-title')[1].textContent = persianTexts.services;
+            document.querySelectorAll('.accordion-header span')[0].textContent = persianTexts.support;
         });
         
         langEn.addEventListener('click', () => {
             document.body.classList.add('english');
             document.documentElement.lang = 'en';
             document.documentElement.dir = 'ltr';
+            
+            // Update texts
+            document.querySelector('.title').textContent = englishTexts.title;
+            document.querySelectorAll('.section-title')[0].textContent = englishTexts.aboutUs;
+            document.querySelectorAll('.section-title')[1].textContent = englishTexts.services;
+            document.querySelectorAll('.accordion-header span')[0].textContent = englishTexts.support;
         });
         
         // Initialize with Persian language
