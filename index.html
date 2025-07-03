@@ -557,6 +557,38 @@
             text-align: center;
             border: 1px solid #ff5555;
         }
+        
+        /* استایل جدید برای دکمه‌ها */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--neon-blue);
+            color: var(--dark-bg);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+        }
+        
+        .btn-outline:hover {
+            background: var(--neon-blue);
+            color: var(--dark-bg);
+        }
     </style>
 </head>
 <body>
@@ -564,17 +596,17 @@
     <div class="container main-page active" id="main-page">
         <header>
             <div class="language-switcher">
-                <button class="language-btn" id="lang-fa">فارسی</button>
-                <button class="language-btn" id="lang-en">English</button>
+                <button class="language-btn btn-outline" id="lang-fa">فارسی</button>
+                <button class="language-btn btn-outline" id="lang-en">English</button>
             </div>
             <div class="auth-buttons">
-                <button class="auth-btn login-btn">ورود</button>
-                <button class="auth-btn register register-btn">ثبت نام</button>
+                <button class="auth-btn btn-outline login-btn">ورود</button>
+                <button class="auth-btn btn-primary register-btn">ثبت نام</button>
             </div>
         </header>
         
         <div class="logo-container">
-            <img src=" 51D8C18B-603C-4B80-92F5-609229941BF4.png" alt="MWT Logo" class="logo">
+            <img src="https://i.ibb.co/VYvLqQk/mwt-logo.png" alt="MWT Logo" class="logo">
             <h1 class="title">توانمندسازی سفر معاملاتی شما</h1>
             <p class="subtitle">Empowering your trade journey</p>
             <h2 class="founder">بنیانگذار مفهوم MWT</h2>
@@ -600,7 +632,7 @@
         <!-- محتوای محافظت شده -->
         <div class="protected-content" id="protected-content">
             <p>برای دسترسی به خدمات باید ثبت نام کنید</p>
-            <button class="auth-btn register" style="margin-top: 10px;">ثبت نام</button>
+            <button class="btn btn-primary register-btn" style="margin-top: 10px;">ثبت نام</button>
         </div>
         
         <!-- متن انگیزشی -->
@@ -682,7 +714,7 @@
     <!-- پیام دسترسی -->
     <div class="access-message" id="access-message">
         برای دسترسی به خدمات باید ثبت نام کنید
-        <button class="auth-btn register" style="margin-right: 10px; padding: 5px 10px;">ثبت نام</button>
+        <button class="btn btn-primary register-btn" style="margin-right: 10px;">ثبت نام</button>
     </div>
     
     <!-- فوتر -->
@@ -704,7 +736,7 @@
                     <label for="login-password">رمز عبور</label>
                     <input type="password" id="login-password" required>
                 </div>
-                <button type="submit" class="form-submit">ورود</button>
+                <button type="submit" class="form-submit btn-primary">ورود</button>
                 <div class="success-message" id="login-success"></div>
                 <div class="error-message" id="login-error"></div>
             </form>
@@ -737,7 +769,7 @@
                     <label for="reg-confirm">تکرار رمز عبور</label>
                     <input type="password" id="reg-confirm" required>
                 </div>
-                <button type="submit" class="form-submit">ثبت نام</button>
+                <button type="submit" class="form-submit btn-primary">ثبت نام</button>
                 <div class="success-message" id="register-success"></div>
                 <div class="error-message" id="register-error"></div>
             </form>
@@ -869,12 +901,12 @@
             // به‌روزرسانی پیام دسترسی
             const accessMessage = document.getElementById('access-message');
             accessMessage.innerHTML = t.register.accessMessage + 
-                `<button class="auth-btn register" style="margin-${lang === 'fa' ? 'right' : 'left'}: 10px; padding: 5px 10px;">${t.register}</button>`;
+                `<button class="btn btn-primary register-btn" style="margin-${lang === 'fa' ? 'right' : 'left'}: 10px;">${t.register}</button>`;
             
             // به‌روزرسانی محتوای محافظت شده
             const protectedContent = document.getElementById('protected-content');
             protectedContent.innerHTML = `<p>${t.register.accessMessage}</p>
-                <button class="auth-btn register" style="margin-top: 10px;">${t.register}</button>`;
+                <button class="btn btn-primary register-btn" style="margin-top: 10px;">${t.register}</button>`;
         }
         
         langFa.addEventListener('click', () => changeLanguage('fa'));
@@ -980,8 +1012,8 @@
         // مدیریت مودال‌ها
         const loginBtn = document.querySelector('.login-btn');
         const registerBtn = document.querySelector('.register-btn');
-        const protectedRegisterBtn = document.querySelector('#protected-content .auth-btn');
-        const accessRegisterBtn = document.querySelector('#access-message .auth-btn');
+        const protectedRegisterBtn = document.querySelector('#protected-content .register-btn');
+        const accessRegisterBtn = document.querySelector('#access-message .register-btn');
         const loginModal = document.getElementById('login-modal');
         const registerModal = document.getElementById('register-modal');
         const closeBtns = document.querySelectorAll('.close-btn');
@@ -1023,7 +1055,7 @@
         const registerSuccess = document.getElementById('register-success');
         const registerError = document.getElementById('register-error');
         
-        registerForm.addEventListener('submit', (e) => {
+        registerForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const currentLang = document.documentElement.lang;
@@ -1048,11 +1080,10 @@
             
             // ذخیره اطلاعات کاربر
             const userData = {
-                name,
-                email,
-                phone,
-                registeredAt: new Date().toLocaleString(),
-                source: window.location.href
+                name: name,
+                email: email,
+                phone: phone,
+                registeredAt: new Date().toLocaleString()
             };
             
             // شبیه‌سازی ارسال به سرور
@@ -1069,12 +1100,9 @@
                     registerModal.style.display = 'none';
                     registerForm.reset();
                     
-                    // بروزرسانی وضعیت دسترسی
+                    // به‌روزرسانی رابط کاربری
                     checkRegistration();
                 }, 3000);
-                
-                // نمایش اطلاعات کاربر در کنسول
-                console.log('کاربر جدید ثبت نام کرد:', userData);
             }, 1500);
         });
         
@@ -1083,7 +1111,7 @@
         const loginSuccess = document.getElementById('login-success');
         const loginError = document.getElementById('login-error');
         
-        loginForm.addEventListener('submit', (e) => {
+        loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const currentLang = document.documentElement.lang;
