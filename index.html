@@ -39,9 +39,13 @@
             z-index: 1;
         }
 
+        .logo-container {
+            margin-top: 70px;
+            margin-bottom: 30px;
+        }
+
         .logo {
             max-width: 250px;
-            margin-bottom: 30px;
             filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.7));
         }
 
@@ -136,7 +140,7 @@
             right: -300px;
             width: 280px;
             height: 100vh;
-            background: rgba(0, 10, 20, 0.95);
+            background: rgba(0, 10, 20, 0.98);
             border-left: 2px solid #00f7ff;
             padding: 70px 20px 20px;
             transition: all 0.3s;
@@ -207,6 +211,7 @@
             margin-left: 10px;
         }
 
+        .service-item,
         .faq-item, 
         .testimonial {
             background: rgba(0, 20, 40, 0.5);
@@ -217,6 +222,7 @@
             box-shadow: 0 0 10px rgba(0, 247, 255, 0.1);
         }
 
+        .service-item h3,
         .faq-item h3, 
         .testimonial h3 {
             color: #00f7ff;
@@ -270,7 +276,7 @@
             left: -350px;
             width: 300px;
             height: 400px;
-            background: rgba(0, 15, 30, 0.95);
+            background: rgba(0, 15, 30, 0.98);
             border: 1px solid #00f7ff;
             border-radius: 10px;
             box-shadow: 0 0 25px rgba(0, 247, 255, 0.5);
@@ -494,6 +500,10 @@
                 max-width: 200px;
             }
             
+            .logo-container {
+                margin-top: 90px;
+            }
+            
             .motivation-box {
                 padding: 15px;
             }
@@ -542,7 +552,9 @@
 
     <!-- صفحه اول با لوگو و متن انگیزشی -->
     <section class="hero-section" id="heroSection">
-        <img src="logo.png" alt="آموزش فارکس - مهناز خورسند" class="logo">
+        <div class="logo-container">
+            <img src="logo.png" alt="آموزش فارکس - مهناز خورسند" class="logo">
+        </div>
         <div class="motivation-box">
             <p class="motivation-text">
                 در دنیای پر از نوسان و فرصت‌های بی‌پایان بازارهای مالی، موفقیت تنها از آن کسانی است که جرئت می‌کنند قدم اول را بردارند، پشتکار دارند و همواره در مسیر یادگیری و رشد هستند. ترید کردن، هنر تحلیل و تصمیم‌گیری در لحظه‌های حساس است که می‌تواند زندگی شما را متحول کند.
@@ -559,6 +571,18 @@
     <div class="menu-box" id="menuBox">
         <i class="fas fa-arrow-right back-btn" id="menuBackBtn"></i>
         <ul>
+            <li>
+                <a href="#" id="home-link">
+                    <i class="fas fa-home menu-icon"></i>
+                    صفحه اصلی
+                </a>
+            </li>
+            <li>
+                <a href="#" id="services-link">
+                    <i class="fas fa-graduation-cap menu-icon"></i>
+                    خدمات آموزشی
+                </a>
+            </li>
             <li>
                 <a href="#" id="about-link">
                     <i class="fas fa-user-tie menu-icon"></i>
@@ -588,6 +612,25 @@
 
     <!-- بخش‌های محتوایی -->
     <div id="content-sections">
+        <!-- خدمات آموزشی -->
+        <section id="services-section" class="content-section">
+            <h2><i class="fas fa-graduation-cap"></i> خدمات آموزشی</h2>
+            <div class="services-content">
+                <div class="service-item">
+                    <h3>دوره رایگان مقدماتی</h3>
+                    <p>این دوره مناسب افرادی است که تازه وارد بازار فارکس شده‌اند و می‌خواهند با اصول اولیه و مفاهیم پایه آشنا شوند.</p>
+                </div>
+                <div class="service-item">
+                    <h3>دوره تخصصی ترید اسکلپی</h3>
+                    <p>آموزش کامل استراتژی‌های سودآور ترید اسکلپی با ترکیب تحلیل تکنیکال و استرولوژی مالی.</p>
+                </div>
+                <div class="service-item">
+                    <h3>دوره ترید روندی</h3>
+                    <p>یادگیری شناسایی و معامله در روندهای اصلی بازار با استفاده از ترکیب تحلیل‌های مختلف.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- درباره ما -->
         <section id="about-section" class="content-section">
             <h2><i class="fas fa-user-tie"></i> درباره من</h2>
@@ -762,6 +805,8 @@
                 'questionPlaceholder': 'سوال شما (اختیاری)',
                 'submitBtn': 'ارسال اطلاعات',
                 'successMessage': 'ثبت نام شما با موفقیت انجام شد. همکاران ما تا ۲۴ ساعت آینده با شما تماس خواهند گرفت.',
+                'home': 'صفحه اصلی',
+                'services': 'خدمات آموزشی',
                 'about': 'درباره ما',
                 'faq': 'سوالات متداول',
                 'testimonials': 'نظرات هنرجویان',
@@ -771,7 +816,74 @@
                 'helpQuestion': 'به پشتیبانی پیام دهید',
                 'messagePlaceholder': 'پیام شما...',
                 'motivationText': 'در دنیای پر از نوسان و فرصت‌های بی‌پایان بازارهای مالی، موفقیت تنها از آن کسانی است که جرئت می‌کنند قدم اول را بردارند، پشتکار دارند و همواره در مسیر یادگیری و رشد هستند. ترید کردن، هنر تحلیل و تصمیم‌گیری در لحظه‌های حساس است که می‌تواند زندگی شما را متحول کند.\n\nما در کنار تحلیل تکنیکال و فاندامنتال، از قدرت استرولوژی مالی نیز بهره می‌بریم؛ دانشی که با بررسی موقعیت سیارات و تأثیرات آن‌ها بر احساسات جمعی بازار، به ما دیدگاهی عمیق‌تر و زمان‌بندی دقیق‌تری برای ورود و خروج می‌دهد. این ترکیب هوشمندانه از علم و هنر، می‌تواند شما را چند قدم جلوتر از بازار نگه دارد.\n\nامروز زمان آن است که ترس‌ها را کنار بگذارید و به سمت آینده‌ای روشن‌تر حرکت کنید.\nبا ما، آموزش ترید اسکلپی و روندی را به‌همراه نگاهی متفاوت از جنس کیهان تجربه می‌کنید.',
-                'aboutText': 'من مهناز خورسند هستم، متولد ۱۳۶۷، دارای مدرک فوق‌لیسانس مهندسی تکنولوژی معماری و با سابقه‌ای چندساله در مسیر پرچالش اما جذاب بازارهای مالی.\n\nاز سال ۱۳۹۸ با دنیای ترید آشنا شدم. مثل خیلی‌ها، مسیرم پر از سردرگمی، ضرر، تلاش و یادگیری بود. اما هیچ‌وقت متوقف نشدم. حالا، بعد از سال‌ها تجربه، آزمون و خطا، و یادگیری مداوم، خوشحالم که می‌تونم بگم بیش از سه ساله به سود مستمر در بازار فارکس رسیدم.\n\nاینجا رو راه‌اندازی کردم تا آموزش‌هایی ارائه بدم که صرفاً تئوری نباشن، بلکه بر پایه تجربه واقعی و قابل استفاده در معاملات واقعی باشن. آموزش‌هایی ساده، کاربردی و بدون وابستگی به اندیکاتورها و روش‌های پیچیده؛ چون معتقدم ساده‌سازی مسیر، کلید موفقیته.\n\nهدف من اینه که شما رو تبدیل کنم به یه تریدر مستقل، کسی که بازار رو می‌فهمه و بر اساس تحلیل خودش تصمیم می‌گیره — نه بر اساس سیگنال دیگران.\n\nاگر دنبال آموزش واقعی، مسیر درست و رشد مستمر در دنیای فارکس هستی، اینجا درست اومدی.'
+                'aboutText': 'من مهناز خورسند هستم، متولد ۱۳۶۷، دارای مدرک فوق‌لیسانس مهندسی تکنولوژی معماری و با سابقه‌ای چندساله در مسیر پرچالش اما جذاب بازارهای مالی.\n\nاز سال ۱۳۹۸ با دنیای ترید آشنا شدم. مثل خیلی‌ها، مسیرم پر از سردرگمی، ضرر، تلاش و یادگیری بود. اما هیچ‌وقت متوقف نشدم. حالا، بعد از سال‌ها تجربه، آزمون و خطا، و یادگیری مداوم، خوشحالم که می‌تونم بگم بیش از سه ساله به سود مستمر در بازار فارکس رسیدم.\n\nاینجا رو راه‌اندازی کردم تا آموزش‌هایی ارائه بدم که صرفاً تئوری نباشن، بلکه بر پایه تجربه واقعی و قابل استفاده در معاملات واقعی باشن. آموزش‌هایی ساده، کاربردی و بدون وابستگی به اندیکاتورها و روش‌های پیچیده؛ چون معتقدم ساده‌سازی مسیر، کلید موفقیته.\n\nهدف من اینه که شما رو تبدیل کنم به یه تریدر مستقل، کسی که بازار رو می‌فهمه و بر اساس تحلیل خودش تصمیم می‌گیره — نه بر اساس سیگنال دیگران.\n\nاگر دنبال آموزش واقعی، مسیر درست و رشد مستمر در دنیای فارکس هستی، اینجا درست اومدی.',
+                'servicesText': [
+                    {
+                        'title': 'دوره رایگان مقدماتی',
+                        'desc': 'این دوره مناسب افرادی است که تازه وارد بازار فارکس شده‌اند و می‌خواهند با اصول اولیه و مفاهیم پایه آشنا شوند.'
+                    },
+                    {
+                        'title': 'دوره تخصصی ترید اسکلپی',
+                        'desc': 'آموزش کامل استراتژی‌های سودآور ترید اسکلپی با ترکیب تحلیل تکنیکال و استرولوژی مالی.'
+                    },
+                    {
+                        'title': 'دوره ترید روندی',
+                        'desc': 'یادگیری شناسایی و معامله در روندهای اصلی بازار با استفاده از ترکیب تحلیل‌های مختلف.'
+                    }
+                ],
+                'faqText': [
+                    {
+                        'question': '۱. آیا این دوره برای مبتدی‌ها مناسب است؟',
+                        'answer': 'بله. دوره رایگان مخصوص افرادی طراحی شده که هیچ آشنایی قبلی با بازار فارکس ندارند.'
+                    },
+                    {
+                        'question': '۲. دوره‌ها چه فرقی با آموزش‌های یوتیوب و اینستاگرام دارند؟',
+                        'answer': 'این دوره‌ها ساختاریافته، گام‌به‌گام، پروژه‌محور و با تمرین و پشتیبانی طراحی شده‌اند. محتوای رایگان شبکه‌های اجتماعی به هیچ‌وجه عمق لازم برای سودآوری واقعی را ندارد.'
+                    },
+                    {
+                        'question': '۳. آیا پس از اتمام دوره امکان دریافت مشاوره یا منتورینگ هست؟',
+                        'answer': 'بله. هنرجویان دوره تخصصی می‌توانند در جلسات کوچینگ اختصاصی شرکت کنند.'
+                    },
+                    {
+                        'question': '۴. آیا به نرم‌افزار یا ابزار خاصی نیاز دارم؟',
+                        'answer': 'خیر، تنها نیاز شما اینترنت، موبایل یا کامپیوتر و انگیزه برای یادگیری و تمرین مستمر است.'
+                    },
+                    {
+                        'question': '۵. آیا گواهی پایان دوره ارائه می‌شود؟',
+                        'answer': 'در حال حاضر گواهی رسمی ارائه نمی‌شود، اما تمرکز اصلی بر روی مهارت واقعی و تسلط عملی بر بازار است.'
+                    }
+                ],
+                'testimonialsText': [
+                    {
+                        'name': 'فرزانه.ک – تهران',
+                        'text': '«من چند دوره مختلف شرکت کرده بودم اما همیشه سردرگم بودم. دوره‌های مهناز خورسند به‌قدری منظم و شفاف بود که برای اولین بار واقعاً مفهوم روند، کندل و تحلیل را درک کردم.»'
+                    },
+                    {
+                        'name': 'سامان.ن – شیراز',
+                        'text': '«پشتیبانی و پیگیری واقعی‌ترین تفاوت این آموزش با بقیه بود. با اینکه از صفر شروع کرده بودم، الان با خیال راحت ترید می‌کنم و مدیریت سرمایه‌ام دست خودمه.»'
+                    },
+                    {
+                        'name': 'سحر.م – مشهد',
+                        'text': '«تجربه من از یادگیری با این دوره‌ها عالی بود. سادگی بیان، تسلط مدرس و آموزش قدم‌به‌قدم باعث شد بالاخره به سود مستمر برسم.»'
+                    }
+                ],
+                'contactText': {
+                    'intro': 'در صورت تمایل به مشاوره، ثبت‌نام در دوره‌ها، یا دریافت راهنمایی بیشتر، می‌توانید از طریق راه‌های ارتباطی زیر با ما در تماس باشید:',
+                    'methods': [
+                        {
+                            'icon': 'envelope',
+                            'text': 'ایمیل: info@example.com'
+                        },
+                        {
+                            'icon': 'phone',
+                            'text': 'واتساپ / تلگرام: ۰۹۱۲XXX۱۲۳۴'
+                        },
+                        {
+                            'icon': 'instagram',
+                            'text': 'اینستاگرام: @forex_with_mahnaz'
+                        }
+                    ]
+                }
             },
             'en': {
                 'registerBtn': 'Register',
@@ -788,6 +900,8 @@
                 'questionPlaceholder': 'Your question (optional)',
                 'submitBtn': 'Submit',
                 'successMessage': 'Your registration was successful. Our team will contact you within 24 hours.',
+                'home': 'Home',
+                'services': 'Educational Services',
                 'about': 'About Us',
                 'faq': 'FAQ',
                 'testimonials': 'Testimonials',
@@ -797,7 +911,74 @@
                 'helpQuestion': 'Message support',
                 'messagePlaceholder': 'Your message...',
                 'motivationText': 'In the world of volatile and endless opportunities in financial markets, success belongs only to those who dare to take the first step, have perseverance and are always on the path of learning and growth. Trading is the art of analysis and decision-making in critical moments that can transform your life.\n\nAlong with technical and fundamental analysis, we also use the power of financial astrology; a knowledge that by examining the position of planets and their effects on the collective emotions of the market, gives us a deeper perspective and more precise timing for entry and exit. This smart combination of science and art can keep you several steps ahead of the market.\n\nToday is the time to put aside your fears and move towards a brighter future.\nWith us, experience scalp and trend trading along with a unique cosmic perspective.',
-                'aboutText': 'I am Mahnaz Khorsand, born in 1988, with a Master\'s degree in Architectural Engineering Technology and several years of experience in the challenging yet fascinating path of financial markets.\n\nSince 2019, I became familiar with trading. Like many others, my path was full of confusion, loss, effort and learning. But I never stopped. Now, after years of experience, trial and error, and continuous learning, I\'m happy to say that I\'ve been consistently profitable in the Forex market for over three years.\n\nI established this platform to provide training that is not merely theoretical, but based on real experience and applicable in real trading. Simple, practical training without dependency on complex indicators and methods; because I believe simplifying the path is the key to success.\n\nMy goal is to transform you into an independent trader, someone who understands the market and makes decisions based on their own analysis - not based on others\' signals.\n\nIf you\'re looking for real education, the right path and continuous growth in the world of Forex, you\'ve come to the right place.'
+                'aboutText': 'I am Mahnaz Khorsand, born in 1988, with a Master\'s degree in Architectural Engineering Technology and several years of experience in the challenging yet fascinating path of financial markets.\n\nSince 2019, I became familiar with trading. Like many others, my path was full of confusion, loss, effort and learning. But I never stopped. Now, after years of experience, trial and error, and continuous learning, I\'m happy to say that I\'ve been consistently profitable in the Forex market for over three years.\n\nI established this platform to provide training that is not merely theoretical, but based on real experience and applicable in real trading. Simple, practical training without dependency on complex indicators and methods; because I believe simplifying the path is the key to success.\n\nMy goal is to transform you into an independent trader, someone who understands the market and makes decisions based on their own analysis - not based on others\' signals.\n\nIf you\'re looking for real education, the right path and continuous growth in the world of Forex, you\'ve come to the right place.',
+                'servicesText': [
+                    {
+                        'title': 'Free Basic Course',
+                        'desc': 'This course is suitable for those who are new to the Forex market and want to learn the basics and fundamental concepts.'
+                    },
+                    {
+                        'title': 'Professional Scalping Trading Course',
+                        'desc': 'Complete training of profitable scalping trading strategies combining technical analysis and financial astrology.'
+                    },
+                    {
+                        'title': 'Trend Trading Course',
+                        'desc': 'Learning to identify and trade in market trends using a combination of different analyses.'
+                    }
+                ],
+                'faqText': [
+                    {
+                        'question': '1. Is this course suitable for beginners?',
+                        'answer': 'Yes. The free course is designed for those who have no prior knowledge of the Forex market.'
+                    },
+                    {
+                        'question': '2. How are these courses different from YouTube and Instagram tutorials?',
+                        'answer': 'These courses are structured, step-by-step, project-based with exercises and support. Free content on social media lacks the depth needed for real profitability.'
+                    },
+                    {
+                        'question': '3. Is there mentoring or consulting available after completing the course?',
+                        'answer': 'Yes. Students of the professional course can participate in private coaching sessions.'
+                    },
+                    {
+                        'question': '4. Do I need any special software or tools?',
+                        'answer': 'No, all you need is internet, a mobile or computer, and motivation to learn and practice consistently.'
+                    },
+                    {
+                        'question': '5. Is a certificate provided upon completion?',
+                        'answer': 'Currently no official certificate is provided, as the main focus is on real skills and practical mastery of the market.'
+                    }
+                ],
+                'testimonialsText': [
+                    {
+                        'name': 'Farzaneh K - Tehran',
+                        'text': '"I had taken several different courses but was always confused. Mahnaz Khorsand\'s courses were so organized and clear that for the first time I truly understood the concepts of trend, candlestick and analysis."'
+                    },
+                    {
+                        'name': 'Saman N - Shiraz',
+                        'text': '"The real difference in this training was the support and follow-up. Even though I started from zero, now I trade with peace of mind and my money management is in my own hands."'
+                    },
+                    {
+                        'name': 'Sahar M - Mashhad',
+                        'text': '"My learning experience with these courses was excellent. The simple explanations, the instructor\'s mastery, and step-by-step training finally helped me achieve consistent profits."'
+                    }
+                ],
+                'contactText': {
+                    'intro': 'For consultation, course registration, or further guidance, you can contact us through the following methods:',
+                    'methods': [
+                        {
+                            'icon': 'envelope',
+                            'text': 'Email: info@example.com'
+                        },
+                        {
+                            'icon': 'phone',
+                            'text': 'WhatsApp/Telegram: +98 912 XXX 1234'
+                        },
+                        {
+                            'icon': 'instagram',
+                            'text': 'Instagram: @forex_with_mahnaz'
+                        }
+                    ]
+                }
             }
         };
         
@@ -835,6 +1016,8 @@
             document.getElementById('successMessage').innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang]['successMessage']}`;
             
             // ترجمه منو
+            document.getElementById('home-link').innerHTML = `<i class="fas fa-home menu-icon"></i> ${translations[lang]['home']}`;
+            document.getElementById('services-link').innerHTML = `<i class="fas fa-graduation-cap menu-icon"></i> ${translations[lang]['services']}`;
             document.getElementById('about-link').innerHTML = `<i class="fas fa-user-tie menu-icon"></i> ${translations[lang]['about']}`;
             document.getElementById('faq-link').innerHTML = `<i class="fas fa-question-circle menu-icon"></i> ${translations[lang]['faq']}`;
             document.getElementById('testimonials-link').innerHTML = `<i class="fas fa-comment-dots menu-icon"></i> ${translations[lang]['testimonials']}`;
@@ -847,6 +1030,7 @@
             document.getElementById('chatInput').placeholder = translations[lang]['messagePlaceholder'];
             
             // ترجمه تیتر بخش‌ها
+            document.querySelector('#services-section h2').innerHTML = `<i class="fas fa-graduation-cap"></i> ${translations[lang]['services']}`;
             document.querySelector('#about-section h2').innerHTML = `<i class="fas fa-user-tie"></i> ${translations[lang]['about']}`;
             document.querySelector('#faq-section h2').innerHTML = `<i class="fas fa-question-circle"></i> ${translations[lang]['faq']}`;
             document.querySelector('#testimonials-section h2').innerHTML = `<i class="fas fa-comment-dots"></i> ${translations[lang]['testimonials']}`;
@@ -857,6 +1041,44 @@
             
             // ترجمه متن درباره ما
             document.querySelector('.about-content').innerHTML = translations[lang]['aboutText'].split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('');
+            
+            // ترجمه بخش خدمات آموزشی
+            const servicesContent = document.querySelector('.services-content');
+            servicesContent.innerHTML = translations[lang]['servicesText'].map(service => `
+                <div class="service-item">
+                    <h3>${service.title}</h3>
+                    <p>${service.desc}</p>
+                </div>
+            `).join('');
+            
+            // ترجمه بخش سوالات متداول
+            const faqContent = document.querySelector('.faq-content');
+            faqContent.innerHTML = translations[lang]['faqText'].map(item => `
+                <div class="faq-item">
+                    <h3>${item.question}</h3>
+                    <p>${item.answer}</p>
+                </div>
+            `).join('');
+            
+            // ترجمه بخش نظرات هنرجویان
+            const testimonialsContent = document.querySelector('.testimonials-content');
+            testimonialsContent.innerHTML = translations[lang]['testimonialsText'].map(testimonial => `
+                <div class="testimonial">
+                    <h3>${testimonial.name}</h3>
+                    <p>${testimonial.text}</p>
+                </div>
+            `).join('');
+            
+            // ترجمه بخش تماس با ما
+            const contactContent = document.querySelector('.contact-content');
+            contactContent.innerHTML = `
+                <p>${translations[lang]['contactText'].intro}</p>
+                <div class="contact-methods">
+                    ${translations[lang]['contactText'].methods.map(method => `
+                        <p><i class="fas fa-${method.icon}"></i> ${method.text}</p>
+                    `).join('')}
+                </div>
+            `;
         }
 
         // مدیریت فرم ثبت نام
@@ -889,6 +1111,8 @@
 
         // مدیریت لینک‌های منو
         const menuLinks = {
+            'home-link': 'heroSection',
+            'services-link': 'services-section',
             'about-link': 'about-section',
             'faq-link': 'faq-section',
             'testimonials-link': 'testimonials-section',
@@ -904,11 +1128,14 @@
                     section.classList.remove('active');
                 });
                 
-                // نمایش بخش مورد نظر
-                document.getElementById(menuLinks[linkId]).classList.add('active');
-                
-                // مخفی کردن صفحه اول
-                document.getElementById('heroSection').style.display = 'none';
+                // نمایش بخش مورد نظر یا صفحه اصلی
+                const targetId = menuLinks[linkId];
+                if (targetId === 'heroSection') {
+                    document.getElementById('heroSection').style.display = 'flex';
+                } else {
+                    document.getElementById('heroSection').style.display = 'none';
+                    document.getElementById(targetId).classList.add('active');
+                }
                 
                 // بستن منو
                 menuBox.classList.remove('active');
@@ -979,6 +1206,9 @@
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
+
+        // بارگذاری اولیه ترجمه
+        translatePage('fa');
     </script>
 </body>
 </html>
